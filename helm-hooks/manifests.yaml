@@ -2,6 +2,21 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
+  name: migration-job
+  annotations:
+    argocd.argoproj.io/sync-options: Force=true,Replace=true
+spec:
+  template:
+    spec:
+      containers:
+        - name: upgrade-sql-schema
+          image: alpine:latest
+          command: ["echo", "Done✅"]
+      restartPolicy: Never
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
   generateName: upgrade-sql-schema
   annotations:
     helm.sh/hook: pre-install
