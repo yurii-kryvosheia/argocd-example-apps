@@ -14,19 +14,30 @@ spec:
           command: ["echo", "Done"]
       restartPolicy: Never
 ---
-apiVersion: batch/v1
-kind: Job
+apiVersion: apps/v1
+kind: ReplicaSet
 metadata:
-  name: another-1
+  name: frontend
   annotations:
-    argocd.argoproj.io/sync-wave: "-1"
+    argocd.argoproj.io/sync-wave: "20"
 spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      tier: frontend
   template:
+    metadata:
+      labels:
+        tier: frontend
     spec:
       containers:
-        - name: page-up
-          image: alpine:latest
-          command: ["sleep", "20"]
-      restartPolicy: Never
-  backoffLimit: 0
-# bump 1
+        - name: main
+          image: nginx:latest
+          ports:
+          - name: liveness-port
+            containerPort: 80
+          livenessProbe:
+            initialDelaySeconds: 30
+            httpGet:
+              path: /healthz
+              port: liveness-port
