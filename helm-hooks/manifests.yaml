@@ -31,35 +31,3 @@ spec:
           command: ["sleep", "2"]
       restartPolicy: Never
   backoffLimit: 0
----
-apiVersion: apps/v1
-kind: ReplicaSet
-metadata:
-  name: frontend
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      tier: frontend
-  template:
-    metadata:
-      labels:
-        tier: frontend
-    spec:
-      containers:
-        - name: main
-          image: nginx:latest
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: frontend
-  annotations:
-    helm.sh/hook-weight: "2"
-spec:
-  selector:
-    tier: frontend
-  ports:
-    - protocol: TCP
-      port: 80
-      targetPort: 80
