@@ -24,7 +24,7 @@ spec:
       containers:
         - name: page-up
           image: alpine:latest
-          command: ["sleep", "10"]
+          command: ["sleep", "20"]
       restartPolicy: Never
   backoffLimit: 0
 # bump 1
