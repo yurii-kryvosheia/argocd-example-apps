@@ -36,8 +36,8 @@ spec:
           ports:
           - name: liveness-port
             containerPort: 80
-          livenessProbe:
+          startupProbe:
             initialDelaySeconds: 30
             httpGet:
-              path: /healthz
+              path: /
               port: liveness-port
