@@ -18,6 +18,8 @@ apiVersion: apps/v1
 kind: ReplicaSet
 metadata:
   name: frontend
+  labels:
+    lb: name
 spec:
   replicas: 1
   selector:
