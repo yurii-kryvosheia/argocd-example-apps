@@ -12,7 +12,7 @@ spec:
       containers:
         - name: upgrade-sql-schema
           image: alpine:latest
-          command: ["echo", "Done"]
+          command: ["echo", "Done✅"]
       restartPolicy: Never
 ---
 apiVersion: apps/v1
