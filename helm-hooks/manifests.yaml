@@ -2,9 +2,7 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: migration-job
-  annotations:
-    argocd.argoproj.io/sync-options: Force=true,Replace=true
+  generateName: migration-job
 spec:
   template:
     spec:
