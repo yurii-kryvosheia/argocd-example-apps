@@ -2,7 +2,7 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: migration-job
+  generateName: migration-job
   annotations:
     argocd.argoproj.io/sync-wave: "-10"
     argocd.argoproj.io/hook-delete-policy: BeforeHookCreation
