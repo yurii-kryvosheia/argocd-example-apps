@@ -7,17 +7,12 @@ metadata:
     argocd.argoproj.io/sync-wave: "-10"
     argocd.argoproj.io/sync-options: "Force=true"
 spec:
-  manualSelector: false
   template:
-    metadata:
-      labels:
-        app: migration-job
-        job-name: migration-job
     spec:
       containers:
         - name: upgrade-sql-schema
           image: alpine:latest
-          command: ["echo", "Done✅✅-3"]
+          command: ["echo", "Done✅✅-4"]
       restartPolicy: Never
 ---
 apiVersion: apps/v1
