@@ -10,6 +10,10 @@ metadata:
 spec:
   manualSelector: false
   template:
+    metadata:
+      labels:
+        app: migration-job
+        job-name: migration-job
     spec:
       containers:
         - name: upgrade-sql-schema
