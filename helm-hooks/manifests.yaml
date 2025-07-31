@@ -8,11 +8,9 @@ metadata:
     argocd.argoproj.io/sync-options: "Replace=true"
     argocd.argoproj.io/hook-delete-policy: BeforeHookCreation
 spec:
+  manualSelector: false
   template:
     spec:
-      metadata:
-        labels:
-          job-name: migration-1
       containers:
         - name: upgrade-sql-schema
           image: alpine:latest
