@@ -5,6 +5,7 @@ metadata:
   generateName: migration-job
   annotations:
     helm.sh/hook: pre-install
+    argocd.argoproj.io/sync-options: Force=true,Replace=true
 spec:
   template:
     spec:
@@ -21,7 +22,7 @@ metadata:
   labels:
     lb: name
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       tier: frontend
