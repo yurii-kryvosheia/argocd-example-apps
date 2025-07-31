@@ -6,6 +6,7 @@ metadata:
   annotations:
     helm.sh/hook: pre-install
     argocd.argoproj.io/sync-options: Force=true,Replace=true
+    helm.sh/hook-delete-policy: before-hook-creation
 spec:
   template:
     spec:
