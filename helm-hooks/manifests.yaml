@@ -10,6 +10,9 @@ metadata:
 spec:
   template:
     spec:
+      metadata:
+        labels:
+          job-name: migration-1
       containers:
         - name: upgrade-sql-schema
           image: alpine:latest
