@@ -4,8 +4,6 @@ kind: Job
 metadata:
   name: migration-job
   annotations:
-    argocd.argoproj.io/hook: Sync
-    argocd.argoproj.io/sync-options: Force=true,Replace=true
     argocd.argoproj.io/sync-wave: "-10"
     argocd.argoproj.io/hook-delete-policy: BeforeHookCreation
 spec:
@@ -24,7 +22,7 @@ metadata:
   labels:
     lb: name
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       tier: frontend
