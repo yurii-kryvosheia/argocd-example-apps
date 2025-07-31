@@ -13,7 +13,7 @@ spec:
         - name: upgrade-sql-schema
           image: alpine:latest
           command: ["echo", "Done✅"]
-      restartPolicy: Never
+      restartPolicy: OnFailure
 ---
 apiVersion: apps/v1
 kind: ReplicaSet
